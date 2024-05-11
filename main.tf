@@ -26,3 +26,11 @@ resource "aws_internet_gateway" "dom7_internet_gateway" {
     Name = "dev-igw"
   }
 }
+
+resource "aws_route_table" "dom7_public_rt" {
+  vpc_id = aws_vpc.dom7_vpc.id
+
+  tags = {
+    Name = "dev-public-rt"
+  }
+}
