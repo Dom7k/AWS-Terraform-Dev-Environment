@@ -65,3 +65,8 @@ resource "aws_security_group" "dom7_sg" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_key_pair" "dom7_auth" {
+  key_name   = "dom7key"
+  public_key = file("~/.ssh/dom7key.pub")
+}
