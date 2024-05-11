@@ -8,6 +8,6 @@ terraform {
 }
 
 provider "aws" {
-  region                  = "us-west-2"
-  profile                 = "vscode"
+  region  = "us-west-2"
+  profile = "vscode"
 }
