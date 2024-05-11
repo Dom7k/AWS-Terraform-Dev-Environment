@@ -34,3 +34,9 @@ resource "aws_route_table" "dom7_public_rt" {
     Name = "dev-public-rt"
   }
 }
+
+resource "aws_route" "default_route" {
+  route_table_id         = aws_route_table.dom7_public_rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.dom7_internet_gateway.id
+}
