@@ -70,3 +70,19 @@ resource "aws_key_pair" "dom7_auth" {
   key_name   = "dom7key"
   public_key = file("~/.ssh/dom7key.pub")
 }
+
+resource "aws_instance" "dev_node" {
+  ami           = data.aws_ami.server_ami.id
+  instance_type = "t2.micro"
+  key_name = aws_key_pair.dom7_auth.id
+  vpc_security_group_ids = [aws_security_group.dom7_sg.id]
+  subnet_id = aws_subnet.dom7_public_subnet.id
+
+  root_block_device {
+    volume_size = 10
+  }
+
+  tags = {
+    Name = "dev-node"
+  }
+}
